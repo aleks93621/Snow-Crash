@@ -1,0 +1,35 @@
+LEVEL 00
+--------
+
+1.  Dans un premier temps, lancez la machine virtuelle.
+    Dès qu'elle est lancée connectez vous grâce à ssh à 
+    cette machine.
+    Commande:   ssh level00@<IP MACHINE> -p 4242
+                Mdp utilisateur = level00
+
+2.  Sur le man de find on peut voir que le -user nous
+    permet d'obtenir les fichiers d'un utilisateur en
+    particulier.
+    Commande:   find /* -user flag00 2>/dev/null
+    Sortie:     /rofs/usr/sbin/john
+                /usr/sbin/john
+    Le 2>/dev/null permet de masquer les erreurs lors
+    de la commande.
+
+4.  Commande:   cat /usr/sbin/john
+    Sortie:     cdiiddwpgswtgt
+
+5.  On essaie ce mot de passe mais il ne fonctionne pas
+    donc on suppose qu'il est crypté.
+    Dans la vidéo de l'intra on voit que le site dcode.fr
+    est conseillé.
+    On se rend sur dcode.fr, on descend dans la rubrique
+    cryptographie et on teste le premier type de
+    chiffrement: le code César.
+    Sortie:     nottoohardhere
+
+6.  Commande:   su flag00
+                Mdp = nottoohardhere
+
+7.  Commande:   su level01
+                Mdp utilisateur = x24ti5gi3x0ol2eh4esiuxias

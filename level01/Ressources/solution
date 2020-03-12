@@ -1,0 +1,23 @@
+LEVEL 01
+--------
+
+1.  Le fichier /etc/passwd peut souvent contenir des informations
+    importantes sur les différents utilisateurs présents.
+    Commande:   cat /etc/passwd | grep flag01
+    Sortie:     flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
+
+2.  Dans la vidéo on peut voir que John est conseillé et on sait que le
+    flag00 a été trouvé dans un fichier john. En cherchant un peu
+    sur google on s'aperçoit que le logiciel John The Ripper nous permet
+    de trouver des mots de passe, donc on l'installe et on teste sur
+    la chaine de caractère trouvée precédemment (42hDRfypTqqnw).
+
+3.  Commande:   john passwd
+    Sortie:     Loaded 1 password hash (Traditional DES [128/128 BS SSE2-16])
+                abcdefg          (?)
+
+4.  Commande:   su flag01
+                Mdp: abcdefg
+
+5.  Commande:   su level02
+                Mdp: f2av5il02puano7naaf6adaaf

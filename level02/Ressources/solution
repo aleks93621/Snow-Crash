@@ -1,0 +1,11 @@
+LEVEL 02
+--------
+
+1.  Commande:   ls
+    Sortie:     level02.pcap
+    On suppose qu'il faut utiliser ce fichier pour trouver
+    le mot de passe.
+
+2.  Pour lire un fichier pcap on va utiliser tcpick et on
+    va déplacer le fichier sur la VM.
+    Commande: scp '-P 4242' level02@<IP MACHINE>:/home/user/level02/level02.pcap ~/projets/Snow-Crash/level02/Ressources

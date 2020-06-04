@@ -6,9 +6,27 @@ LEVEL 02
     On suppose qu'il faut utiliser ce fichier pour trouver
     le mot de passe.
 
-2.  Pour lire un fichier pcap on va utiliser tcpick et on
-    va déplacer le fichier sur la VM.
-    Commande: scp '-P 4242' level02@<IP MACHINE>:/home/user/level02/level02.pcap ~/projets/Snow-Crash/level02/Ressources
+2.  Tout d'abord on déplace le fichier de la VM vers notre système pour qu'on puisse l'analyser.
+    Commande:   scp '-P 4242' level02@<IP MACHINE>:/home/user/level02/level02.pcap ~/projets/Snow-Crash/level02/Ressources
     Un mot de passe sera demandé: f2av5il02puano7naaf6adaaf
 
-3.  
+3.  Une fois le fichier déplacé on installe tcpick qui va nous permettre de lire le fichier pcap.
+    Commande:   sudo apt-get install tcpick
+
+4.  Tcpick est installé, maintenant on lance une commande pour lire le fichier.
+    Commande:    sudo tcpick -C -yX -r level02.pcap
+                 -C: permet de mettre la sortie en couleur
+                 -yX:permet d'afficher les paquets en ascii et en hexa
+                 -r: permet de lire des paquets à partir d'un fichier
+
+    Sortie:     66 74 5f 77 61 6e 64 72 7f 7f 7f 4e 44 52 65 6c 7f 4c 30 4c
+                f  t  _  w  a  n  d  r           N  D  R  e  l     L  0  L
+                En sachant que 7f = DEL
+    
+    Mdp:        ft_waNDReL0L
+
+5.  Commande:   su flag02
+                Mdp: ft_waNDReL0L
+
+6.  Commande:   su level03 
+                Mdp: kooda2puivaav1idi4f57q8iq

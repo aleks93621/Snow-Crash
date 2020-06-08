@@ -23,5 +23,5 @@ LEVEL 05
     On introduit "getflag > /tmp/flag" dans /opt/openarenaserver/flag et attendre le temps que
     la tâche cron s'exécute.
 
-4.  Commande: su level06
+5.  Commande: su level06
     Mdp:      viuaaale9huek52boumoomioc

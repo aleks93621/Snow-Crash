@@ -1,0 +1,47 @@
+LEVEL 13
+--------
+
+1.  Commande:   ls
+    Sortie:     level13
+
+2.  Commande:   ./level13
+    Sortie:     UID 2013 started us but we we expect 4242
+    Pour ce level il va falloir changer l'UID recu.
+
+3.  On va utiliser l'outil gdb pour changer la valeur recue par getuid.
+    Commande:  gdb level13
+                
+    Commande:   disas main    // permet de lister les différentes étapes de 
+                                 l'exécutable.
+    Sortie:     ................
+                0x08048595   <+9>:	call   0x8048380 <getuid@plt>
+                0x0804859a  <+14>:	cmp    $0x1092,%eax
+                0x0804859f  <+19>:	je     0x80485cb <main+63>
+                0x080485a1  <+21>:	call   0x8048380 <getuid@plt>
+                ................
+
+    Commande:   b *0x8048380    // permet de mettre un point d'arrêt sur getuid
+    Sortie:     Breakpoint 1 at 0x8048380
+
+    Commande:   run    // on lance le programme
+    Sortie:     Starting program: /home/user/level13/level13 
+                Breakpoint 1, 0x08048380 in getuid@plt ()
+
+    Maintenant on utilise la commande step tant que print $eax n'est pas égal
+    à 2013.
+    Commande:   step       // permet de sauter jusqu'au point d'arrêt.
+    Commande:   print $eax // permet d'afficher la valeur de getuid
+
+    2 step suffisent normalement pour trouver l'endroit où $eax est à 2013.
+    Sortie:     $3 = 2013
+
+    Maintenant on va changer cette valeur par 4242.
+    Commande:   set $eax=4242
+
+    Et pour finir on refait un step pour arriver à la fin du programme.
+    Commande:   step
+    Sortie:     your token is 2A31L79asukciNyi8uppkEuSx
+
+
+4.  Commande:   su level14
+    Mdp:        2A31L79asukciNyi8uppkEuSx

